@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Zend Technologies - initial API and implementation
  *******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.php.internal.debug.core.zend.debugger.Expression;
 
 /**
  * Utility class for PHP debugger's variables.
- * 
+ *
  * @author Bartlomiej Laczkowski
  */
 public class VariablesUtil {
@@ -101,12 +101,13 @@ public class VariablesUtil {
 
 	/**
 	 * Checks if given variable name is a name of super global variable.
-	 * 
+	 *
 	 * @param name
 	 * @return <code>true</code> if given variable name is a name of super
 	 *         global variable, <code>false</code> otherwise
 	 */
 	public static boolean isSuperGlobal(String name) {
+		// TODO: add user-configurable superglobals to this and the list?
 		for (int i = 0; i < SUPER_GLOBAL_NAMES.length; i++)
 			if (SUPER_GLOBAL_NAMES[i].equalsIgnoreCase(name))
 				return true;
@@ -115,7 +116,7 @@ public class VariablesUtil {
 
 	/**
 	 * Checks if given variable name is a name of "this" pseudo-variable.
-	 * 
+	 *
 	 * @param name
 	 * @return <code>true</code> if given variable name is a name of "this"
 	 *         pseudo-variable, <code>false</code> otherwise
@@ -126,7 +127,7 @@ public class VariablesUtil {
 
 	/**
 	 * Checks if given variable name is a name of virtual class indicator.
-	 * 
+	 *
 	 * @param name
 	 * @return <code>true</code> if given variable name is a name of virtual
 	 *         class indicator, <code>false</code> otherwise
@@ -137,7 +138,7 @@ public class VariablesUtil {
 
 	/**
 	 * Sorts provided top-level variables.
-	 * 
+	 *
 	 * @param members
 	 */
 	public static void sortContextMembers(Object[] members) {
@@ -147,7 +148,7 @@ public class VariablesUtil {
 
 	/**
 	 * Sorts provided top-level variables.
-	 * 
+	 *
 	 * @param members
 	 */
 	public static void sortObjectMembers(Object[] members) {
