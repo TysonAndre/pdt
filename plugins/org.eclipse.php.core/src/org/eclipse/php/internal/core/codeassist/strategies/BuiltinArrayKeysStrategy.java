@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *     Zend Technologies
@@ -34,7 +34,7 @@ import org.eclipse.php.internal.core.typeinference.FakeField;
 
 /**
  * This strategy completes builtin array keys, like in _SERVER.
- * 
+ *
  * @author michael
  */
 public class BuiltinArrayKeysStrategy extends AbstractCompletionStrategy {
@@ -119,6 +119,7 @@ public class BuiltinArrayKeysStrategy extends AbstractCompletionStrategy {
 				}
 			}
 
+			// TODO: also add runkit superglobals to globals
 			PHPVersion phpVersion = arrayContext.getPhpVersion();
 			reportVariables(reporter, arrayContext, PHPVariables.getVariables(phpVersion), prefix, true, extraObject);
 		}

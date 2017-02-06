@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *     Zend Technologies
@@ -28,7 +28,7 @@ import org.eclipse.php.internal.core.typeinference.PHPModelUtils;
 
 /**
  * This strategy completes global variables including constants
- * 
+ *
  * @author michael
  */
 public class LocalMethodVariablesStrategy extends GlobalElementStrategy {
@@ -95,6 +95,7 @@ public class LocalMethodVariablesStrategy extends GlobalElementStrategy {
 					ICompletionReporter.RELEVANCE_ADJUST);
 		}
 
+		// This is where to modify so that runkit.superglobal would be completed...
 		PHPVersion phpVersion = concreteContext.getPhpVersion();
 		for (String variable : PHPVariables.getVariables(phpVersion, PHPVariables.SUPER_GLOBAL)) {
 			if (variable.startsWith(prefix)) {

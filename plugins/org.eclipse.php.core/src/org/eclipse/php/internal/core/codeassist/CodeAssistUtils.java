@@ -49,7 +49,7 @@ import org.eclipse.php.internal.core.util.text.TextSequence;
 /**
  * This is a common utility used by completion and selection engines for PHP
  * elements retrieval.
- * 
+ *
  * @author michael
  */
 public class CodeAssistUtils {
@@ -81,7 +81,7 @@ public class CodeAssistUtils {
 
 	/**
 	 * Returns type of a class field defined by name.
-	 * 
+	 *
 	 * @param types
 	 * @param propertyName
 	 * @param offset
@@ -101,6 +101,17 @@ public class CodeAssistUtils {
 				if (!propertyName.startsWith(DOLLAR)) {
 					propertyName = DOLLAR + propertyName;
 				}
+				// Just hardcode the types?
+				/*
+				if propertyName in runkit.superglobals :
+					try {
+						return PHPModelUtils.getTypes("tag_global", sourceModule, offset, null, null);
+					} catch (ModelException e) {
+						if (DLTKCore.DEBUG) {
+							Logger.logException(e);
+						}
+					}
+				*/
 				PHPDocClassVariableGoal phpDocGoal = new PHPDocClassVariableGoal(typeContext, propertyName, offset);
 				IEvaluatedType evaluatedType = typeInferencer.evaluateTypePHPDoc(phpDocGoal, 3000);
 
@@ -123,7 +134,7 @@ public class CodeAssistUtils {
 
 	/**
 	 * Returns type of a variable defined by name.
-	 * 
+	 *
 	 * @param sourceModule
 	 * @param variableName
 	 * @param position
@@ -178,7 +189,7 @@ public class CodeAssistUtils {
 
 	/**
 	 * Returns type of a variable defined by name.
-	 * 
+	 *
 	 * @param sourceModule
 	 * @param variableName
 	 * @param position
@@ -190,6 +201,7 @@ public class CodeAssistUtils {
 		if (context != null) {
 			VariableReference varReference = getVariableReference(variableName, position);
 			ExpressionTypeGoal goal = new ExpressionTypeGoal(context, varReference);
+			// Modify the inference?
 			PHPTypeInferencer typeInferencer = new PHPTypeInferencer();
 			IEvaluatedType evaluatedType = typeInferencer.evaluateType(goal);
 
@@ -223,7 +235,7 @@ public class CodeAssistUtils {
 
 	/**
 	 * Determines the return type of the given method element.
-	 * 
+	 *
 	 * @param method
 	 * @param function
 	 * @param offset
@@ -241,7 +253,7 @@ public class CodeAssistUtils {
 
 	/**
 	 * Determines the return type of the given method element.
-	 * 
+	 *
 	 * @param method
 	 * @param mask
 	 * @param offset
@@ -286,7 +298,7 @@ public class CodeAssistUtils {
 	/**
 	 * The "self" function needs to be added only if we are in a class method
 	 * and it is not an abstract class or an interface
-	 * 
+	 *
 	 * @param fileData
 	 * @param offset
 	 * @return the self class data or null in case not found
@@ -312,7 +324,7 @@ public class CodeAssistUtils {
 
 	/**
 	 * This method finds types for the receiver in the statement text.
-	 * 
+	 *
 	 * @param sourceModule
 	 * @param statementText
 	 * @param endPosition
@@ -474,7 +486,7 @@ public class CodeAssistUtils {
 
 	/**
 	 * example:(new class1())->avc2()[1][1]->avc1()
-	 * 
+	 *
 	 * @param types
 	 * @param method
 	 * @param mask
@@ -753,7 +765,7 @@ public class CodeAssistUtils {
 	/**
 	 * This method checks whether the specified function name refers to existing
 	 * method in the given list of classes.
-	 * 
+	 *
 	 * @param sourceModule
 	 * @param className
 	 * @param functionName
@@ -776,8 +788,8 @@ public class CodeAssistUtils {
 
 	/**
 	 * Removes elements based on element name.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param elements
 	 *            array of IModelElement's
 	 * @return list of elements without duplicates
